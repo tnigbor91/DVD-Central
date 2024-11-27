@@ -1,0 +1,11 @@
+﻿@model IEnumerable<TAN.DVDCentral.BL.Models.Order>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p class="m-2">
+    <a asp-action="Create">Create New</a>
+</p>
+    <div>
+        <partial name="_OrderPartial" />
+    </div>

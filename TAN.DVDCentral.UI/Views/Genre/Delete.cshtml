@@ -1,0 +1,21 @@
+﻿@model TAN.DVDCentral.BL.Models.Genre
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <dl class="row m-2">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger m-2" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

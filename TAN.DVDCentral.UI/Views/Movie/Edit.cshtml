@@ -1,0 +1,101 @@
+﻿@model TAN.DVDCentral.UI.ViewModels.MovieVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row m-2">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input hidden asp-for="Movie.Id" class="form-control" />
+
+            <div class="form-group">
+                <label asp-for="Movie.Title" class="control-label"></label>
+                <input asp-for="Movie.Title" class="form-control" />
+                <span asp-validation-for="Movie.Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Movie.Description" class="control-label"></label>
+                <input asp-for="Movie.Description" class="form-control" />
+                <span asp-validation-for="Movie.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Movie.ImagePath" class="control-label"></label>
+                <img class="imagepropmedium m-2" alt="@Model.Movie.Description"
+                     id="programimage" src="~/images/@Model.Movie.ImagePath"
+                     onclick="on('/images/@Model.Movie.ImagePath')" />
+                <input asp-for="Movie.ImagePath" class="form-control" />
+                <span asp-validation-for="Movie.ImagePath" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Movie.InStkQty" class="control-label"></label>
+                <input asp-for="Movie.InStkQty" class="form-control" />
+                <span asp-validation-for="Movie.InStkQty" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Movie.DirectorName" class="control-label"></label>
+                <select asp-for="Movie.DirectorId" class="form-control"
+                        asp-items="@(new SelectList(Model.DirectorList, "Id", "FullName"))">
+                </select>
+                <span asp-validation-for="Movie.DirectorName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Movie.Id" class="control-label">Genre <i><small>(Hold CTRL for multiselect)</small></i></label>
+
+                <select asp-for="Movie.Id" class="form-control"
+                        asp-items="@(new SelectList(Model.GenreList, "Id", "Description"))" multiple>
+                </select>
+
+                <span asp-validation-for="Movie.Id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Movie.Rating" class="control-label"></label>
+                <select asp-for="Movie.RatingId" class="form-control"
+                        asp-items="@(new SelectList(Model.RatingList, "Id", "Description"))">
+                </select>
+                <span asp-validation-for="Movie.Rating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Movie.Format" class="control-label"></label>
+                <select asp-for="Movie.FormatId" class="form-control"
+                        asp-items="@(new SelectList(Model.FormatList, "Id", "Description"))">
+                </select>
+                <span asp-validation-for="Movie.Format" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Movie.Cost" class="control-label"></label>
+                <input asp-for="Movie.Cost" class="form-control" />
+                <span asp-validation-for="Movie.Cost" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary m-2" />
+
+                <input class="btn btn-sm btn-primary"
+                       type="button"
+                       onclick="AddToCart(Movie.Id)" value="+" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="m-2">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

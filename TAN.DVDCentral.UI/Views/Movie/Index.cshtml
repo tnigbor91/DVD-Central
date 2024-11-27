@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TAN.DVDCentral.BL.Models.Movie>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card mb-2">
+                <div class="card-header">
+                    <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                </div>
+
+                <div class="card-body">
+                    <img src="/images/@item.ImagePath"
+                         onclick="on('/images/@item.ImagePath')"
+                         class="card-img" />
+                    <h5>@Html.DisplayFor(modelItem => item.Rating)</h5>
+                    <textarea style="overflow-y: scroll;">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </textarea>
+                    <h5>@Html.DisplayFor(modelItem => item.DirectorName)</h5>
+                    <h5>@Html.DisplayFor(modelItem => item.Format)</h5>
+                    <h5>@Html.DisplayFor(modelItem => item.Cost)</h5>
+                    <h5>@Html.DisplayFor(modelItem => item.InStkQty)</h5>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Edit">Edit</a>
+                    <a class="btn btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Details">Details</a>
+                    <a class="btn btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Delete">Delete</a>
+                    @* <a class="btn btn-sm btn-primary" asp-route-id="@item.Id" asp-action="Add" asp-controller="ShoppingCart">Add to Cart</a> *@
+                    <input class="btn btn-sm btn-primary"
+                           type="button"
+                           onclick="AddToCart(@item.Id)" value="+" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

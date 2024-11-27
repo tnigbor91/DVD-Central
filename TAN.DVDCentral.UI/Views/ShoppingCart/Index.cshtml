@@ -1,0 +1,69 @@
+﻿@model TAN.DVDCentral.BL.Models.ShoppingCart
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movieItems[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movieItems[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movieItems[0].Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.movieItems) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                  @Html.ActionLink("Remove", "Remove", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                SubTotal
+            </th>
+            <th>
+                Tax
+            </th>
+            <th>
+                Total Cost
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.SubTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Tax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Total)
+                </td>
+            </tr>
+    </table>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TAN.DVDCentral.BL.Models.Customer>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p class="m-2">
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    
+    <div>
+        <partial name="_CustomerPartial" />
+    </div>

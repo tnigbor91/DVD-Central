@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TAN.DVDCentral.BL.Models\TAN.DVDCentral.BL.Models.csproj" />
+    <ProjectReference Include="..\TAN.DVDCentral.PL\TAN.DVDCentral.PL.csproj" />
+  </ItemGroup>
+
+</Project>
